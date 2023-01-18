@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>    
+        <div id="root"></div>
+    </body>
+    <!--react , react-dom import하기-->
+    <!--아래 두 줄을 작성한 뒤 크롬 개발자도구 - 콘솔에서 react를 쳐보면 리엑트가 연결이 되었음을 확인할 수 있음-->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const root = document.getElementById("root");
+        function Title () {
+            return (
+                <h3 id="title" onMouseEnter = {() => console.log("mouse enter")}>
+                    Hello I'm a title
+                </h3>
+            );
+        }
+        const Button = () => (
+            <button 
+                style = {{
+                    backgroundColor: "tomato",
+                }} 
+                onClick = {() => console.log("im clicked")}
+            >
+                Click me
+            </button>
+        );
+            
+        const Container = () => (
+            <div>
+                <Title /> 
+                <Button />
+            </div>
+        );
+        ReactDOM.render(<Container />, root);
+
+        //render == show it to users!
+        //리엑트 돔에게 말해주는 것 (span을 root안에 render 해줘)
+        //개발자도구 - 요소에서 div 안에 span이 생긴 것을 확인할 수 있음
+    </script>
+</html>
