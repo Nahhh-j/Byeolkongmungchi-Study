@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>    
+        <div id="root"></div>
+    </body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const root = document.getElementById("root");
+        let counter = 0;
+        function countUp() {
+            counter = counter + 1;
+            render();
+        }
+        function render() {
+            ReactDOM.render(<Container />, root); // 버튼 누를때마다 매번 카운터가 올라가도록 렌더링을 매번 해주기 위해 추가
+        }
+        const Container = () => (
+            <div>
+                <h3>Total clicks: {counter}</h3>
+                <button onClick = {countUp}>Click me</button>
+            </div>
+        );
+        render();
+    </script>
+</html>
+
+<!--
+1. 어플리케이션 시작 시 counter = 0
+2. 26번째 줄 render함수 실행
+3. render 함수는 Container 컴포넌트를 root에 담아줌
+4. 어플리케이션이 막 시작되었을 때의 Container은 Total click을 가지고 있으며, counter과 연결되어있음 (20-22줄)
+5. onClick 이벤트 리스너를 통해 버튼 클릭 시 {}안의 countUp 함수가 호출
+6. countUp함수는 counter을 증가시키고 다시 render을 호출
+7. render 함수 호출되면 같은 과정 반복 (3. Container을 root에 넣기)
+8. 다시 반복하면 이번 Container 컴포넌트는 업데이트 된 counter을 가지고 있음
+
+근데 이 과정은 너무 복잡
+-->
