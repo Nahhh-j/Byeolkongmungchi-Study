@@ -1,4 +1,4 @@
-# vue-maually
+# vuestargram
 
 ## Project setup
 ```
